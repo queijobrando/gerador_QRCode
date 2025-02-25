@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+</head>
+<body>
+    <h1>Gerador de QR Code</h1>
+    <form action="/generate" method="POST">
+        <input type="text" name="link" placeholder="Insira o link ou texto">
+        <button type="submit">Gerar QR Code</button>
+    </form>
+
+    {% if data %}
+    <div class="gerado">
+        <img id="qrcode" src="{{data}}" alt="QR Code">
+        <p>QR Code gerado</p>
+        <button onclick="downloadQRCode()">Baixar QR Code</button>
+        <a href="/clear"><button>Limpar QR Code</button></a>
+    </div>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
